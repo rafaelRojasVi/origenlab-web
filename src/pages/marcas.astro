@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { brands } from '../data/brands';
+---
+
+<Layout
+  title="Marcas — OrigenLab"
+  description="Marcas y proveedores con los que trabajamos. OrigenLab, equipamiento para laboratorio."
+>
+  <h1 class="text-2xl font-bold text-slate-900">Marcas</h1>
+  <p class="mt-4 text-slate-600">
+    Trabajamos con marcas reconocidas en equipamiento e instrumentación para laboratorio. Consulte disponibilidad y cotizaciones con nosotros.
+  </p>
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+    {brands.map((brand) => (
+      <li class="rounded border border-slate-200 p-4">
+        <span class="font-medium text-slate-900">{brand.name}</span>
+      </li>
+    ))}
+  </ul>
+</Layout>

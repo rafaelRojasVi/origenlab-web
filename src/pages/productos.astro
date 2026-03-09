@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { categories } from '../data/categories';
+---
+
+<Layout
+  title="Productos — OrigenLab"
+  description="Catálogo de equipamiento e instrumentación para laboratorio. OrigenLab, Valdivia."
+>
+  <h1 class="text-2xl font-bold text-slate-900">Productos</h1>
+  <p class="mt-4 text-slate-600">
+    Ofrecemos equipamiento, instrumentación, reactivos y consumibles para laboratorio. A continuación, las categorías que atendemos.
+  </p>
+  <ul class="mt-8 space-y-4">
+    {categories.map((cat) => (
+      <li class="rounded border border-slate-200 p-4">
+        <a href={`/categorias/${cat.slug}`} class="font-medium text-slate-900 hover:underline">
+          {cat.name}
+        </a>
+        {cat.description && <p class="mt-1 text-sm text-slate-600">{cat.description}</p>}
+      </li>
+    ))}
+  </ul>
+  <div class="mt-12">
+    <CtaSection
+      title="¿Busca algo en particular?"
+      description="Contáctenos para consultas de disponibilidad y cotizaciones."
+      ctaText="Contactar"
+      ctaHref="/contacto"
+    />
+  </div>
+</Layout>

@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { site } from '../config/site';
+---
+
+<Layout
+  title={`${site.name} — ${site.tagline}`}
+  description={site.description}
+>
+  <Hero
+    title={site.tagline}
+    subtitle="Soluciones en equipamiento e instrumentación para laboratorios. Asesoría técnica y suministro de reactivos y consumibles en Valdivia y la región."
+    ctaText="Ver productos"
+    ctaHref="/productos"
+  />
+  <section class="py-10">
+    <p class="max-w-2xl text-slate-600">
+      En OrigenLab nos especializamos en equipamiento y soluciones para laboratorio, con énfasis en calidad y soporte técnico. Trabajamos con instituciones, centros de investigación y empresas que requieren instrumentación confiable.
+    </p>
+  </section>
+  <CtaSection
+    title="¿Necesita cotización o asesoría?"
+    description="Contáctenos; le responderemos a la brevedad."
+    ctaText="Contactar"
+    ctaHref="/contacto"
+  />
+</Layout>

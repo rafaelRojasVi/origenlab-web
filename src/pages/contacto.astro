@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../config/site';
+---
+
+<Layout
+  title="Contacto — OrigenLab"
+  description="Contacte a OrigenLab. Equipamiento para laboratorio en Valdivia, Chile."
+>
+  <h1 class="text-2xl font-bold text-slate-900">Contacto</h1>
+  <p class="mt-4 text-slate-600">
+    Para consultas, cotizaciones o asesoría técnica, contáctenos.
+  </p>
+  <div class="mt-8 space-y-2 text-slate-700">
+    <p><strong>Correo:</strong> <a href={`mailto:${site.email}`} class="underline hover:text-slate-900">{site.email}</a></p>
+    <p><strong>Ubicación:</strong> {site.location}</p>
+  </div>
+  <p class="mt-8">
+    <a href={`mailto:${site.email}`} class="btn-primary">Enviar correo</a>
+  </p>
+</Layout>

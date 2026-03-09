@@ -1,0 +1,15 @@
+---
+import { site } from '../config/site';
+---
+
+<footer class="mt-16 border-t border-slate-200">
+  <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-600">
+    <p class="font-medium text-slate-800">{site.name}</p>
+    <p>{site.location}</p>
+    <p>
+      <a href={`mailto:${site.email}`} class="hover:text-slate-900 underline">
+        {site.email}
+      </a>
+    </p>
+  </div>
+</footer>
