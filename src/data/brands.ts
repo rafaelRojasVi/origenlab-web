@@ -10,7 +10,6 @@ export interface Brand {
 }
 
 export const brands: Brand[] = [
-  { id: '1', name: 'Marca ejemplo A', slug: 'marca-ejemplo-a' },
-  { id: '2', name: 'Marca ejemplo B', slug: 'marca-ejemplo-b' },
-  { id: '3', name: 'Marca ejemplo C', slug: 'marca-ejemplo-c' },
+  { id: '1', name: 'Marcas disponibles', slug: 'marcas-disponibles' },
+  { id: '2', name: 'Catálogo en actualización', slug: 'catalogo-actualizacion' },
 ];

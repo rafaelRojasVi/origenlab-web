@@ -5,6 +5,7 @@
 export const site = {
   name: 'OrigenLab',
   domain: 'origenlab.cl',
+  baseUrl: 'https://origenlab.cl',
   email: 'contacto@origenlab.cl',
   location: 'Valdivia, Chile',
   tagline: 'Equipamiento y soluciones para laboratorio',

@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import CtaSection from '../components/CtaSection.astro';
+import Card from '../components/Card.astro';
 import { site } from '../config/site';
+import { categories } from '../data/categories';
 ---
 
 <Layout
@@ -11,19 +13,58 @@ import { site } from '../config/site';
 >
   <Hero
     title={site.tagline}
-    subtitle="Soluciones en equipamiento e instrumentación para laboratorios. Asesoría técnica y suministro de reactivos y consumibles en Valdivia y la región."
+    subtitle="Soluciones en equipamiento e instrumentación para laboratorios en Valdivia y la región. Asesoría técnica, suministro de reactivos y consumibles, y soporte especializado."
     ctaText="Ver productos"
     ctaHref="/productos"
   />
-  <section class="py-10">
+
+  <section class="py-12">
     <p class="max-w-2xl text-slate-600">
-      En OrigenLab nos especializamos en equipamiento y soluciones para laboratorio, con énfasis en calidad y soporte técnico. Trabajamos con instituciones, centros de investigación y empresas que requieren instrumentación confiable.
+      En OrigenLab nos especializamos en equipamiento y soluciones para laboratorio, con énfasis en calidad, asesoría técnica y atención personalizada. Trabajamos con instituciones educativas, centros de investigación, laboratorios clínicos e industriales que requieren instrumentación confiable y un proveedor de confianza.
     </p>
   </section>
-  <CtaSection
-    title="¿Necesita cotización o asesoría?"
-    description="Contáctenos; le responderemos a la brevedad."
-    ctaText="Contactar"
-    ctaHref="/contacto"
-  />
+
+  <section class="py-12">
+    <h2 class="text-xl font-semibold text-slate-900">Por qué elegirnos</h2>
+    <ul class="mt-6 grid gap-6 sm:grid-cols-3">
+      <li class="rounded-lg border border-slate-200 bg-slate-50/50 p-5">
+        <h3 class="font-semibold text-slate-900">Atención personalizada</h3>
+        <p class="mt-2 text-sm text-slate-600">Asesoría según las necesidades de su laboratorio y seguimiento en sus proyectos.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-slate-50/50 p-5">
+        <h3 class="font-semibold text-slate-900">Asesoría técnica</h3>
+        <p class="mt-2 text-sm text-slate-600">Soporte en la selección de equipos, reactivos y consumibles adecuados.</p>
+      </li>
+      <li class="rounded-lg border border-slate-200 bg-slate-50/50 p-5">
+        <h3 class="font-semibold text-slate-900">Suministro confiable</h3>
+        <p class="mt-2 text-sm text-slate-600">Trabajamos con marcas reconocidas y estándares de calidad verificables.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="py-12">
+    <h2 class="text-xl font-semibold text-slate-900">Categorías de productos</h2>
+    <p class="mt-2 text-slate-600">Instrumentación, reactivos, consumibles y equipos para su laboratorio.</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {categories.map((cat) => (
+        <Card
+          title={cat.name}
+          href={`/categorias/${cat.slug}`}
+          description={cat.description}
+        />
+      ))}
+    </div>
+    <p class="mt-6">
+      <a href="/productos" class="link-muted text-sm font-medium">Ver todas las categorías →</a>
+    </p>
+  </section>
+
+  <section class="py-12">
+    <CtaSection
+      title="¿Necesita cotización o asesoría técnica?"
+      description="Contáctenos por correo; le responderemos a la brevedad."
+      ctaText="Contactar"
+      ctaHref="/contacto"
+    />
+  </section>
 </Layout>

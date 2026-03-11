@@ -4,9 +4,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Botón principal reutilizable (Hero, CTA) */
 @layer components {
   .btn-primary {
     @apply inline-block rounded bg-slate-800 px-6 py-3 text-sm font-medium text-white hover:bg-slate-700;
+  }
+  .link-muted {
+    @apply text-slate-600 hover:text-slate-900 hover:underline;
   }
 }

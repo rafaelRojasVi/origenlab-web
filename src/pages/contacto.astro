@@ -1,21 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
 import { site } from '../config/site';
 ---
 
 <Layout
   title="Contacto — OrigenLab"
-  description="Contacte a OrigenLab. Equipamiento para laboratorio en Valdivia, Chile."
+  description="Contacte a OrigenLab. Correo contacto@origenlab.cl. Equipamiento para laboratorio en Valdivia, Chile."
 >
-  <h1 class="text-2xl font-bold text-slate-900">Contacto</h1>
-  <p class="mt-4 text-slate-600">
-    Para consultas, cotizaciones o asesoría técnica, contáctenos.
-  </p>
-  <div class="mt-8 space-y-2 text-slate-700">
-    <p><strong>Correo:</strong> <a href={`mailto:${site.email}`} class="underline hover:text-slate-900">{site.email}</a></p>
-    <p><strong>Ubicación:</strong> {site.location}</p>
+  <PageHeader
+    title="Contacto"
+    lead="Para consultas, cotizaciones o asesoría técnica, contáctenos por correo. Le responderemos a la brevedad."
+  />
+
+  <div class="mt-10 rounded-lg border border-slate-200 bg-slate-50/50 p-6">
+    <dl class="space-y-4 text-slate-700">
+      <div>
+        <dt class="font-medium text-slate-900">Correo</dt>
+        <dd>
+          <a href={`mailto:${site.email}`} class="link-muted">{site.email}</a>
+        </dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-900">Ubicación</dt>
+        <dd>{site.location}</dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-900">Horario de atención</dt>
+        <dd class="text-slate-600">Lunes a viernes. Consulte por correo.</dd>
+      </div>
+    </dl>
+    <p class="mt-6">
+      <a href={`mailto:${site.email}`} class="btn-primary">Enviar correo</a>
+    </p>
   </div>
-  <p class="mt-8">
-    <a href={`mailto:${site.email}`} class="btn-primary">Enviar correo</a>
-  </p>
 </Layout>

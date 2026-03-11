@@ -1,7 +1,7 @@
 # OrigenLab — Sitio web
 
 Sitio estático para **OrigenLab**, empresa de equipamiento y soluciones para laboratorio (Valdivia, Chile).  
-Tech: Astro + Tailwind CSS. Contenido en español.
+**Stack:** Astro + Tailwind CSS. Contenido en español. Despliegue manual a HostGator (public_html).
 
 ## Comandos
 
@@ -16,21 +16,36 @@ Tech: Astro + Tailwind CSS. Contenido en español.
 
 ## Despliegue (HostGator)
 
-El build genera archivos estáticos en `dist/`. Para HostGator (hosting compartido):
+1. `npm run check` y `npm run build`.
+2. Subir **todo el contenido** de `dist/` a `public_html` (no una carpeta `dist` dentro de public_html).
+3. Incluir el archivo `.htaccess` (HTTPS y cabeceras de seguridad).
 
-1. Ejecutar `npm run build`.
-2. Subir **todo el contenido** de `dist/` al directorio público del dominio (p. ej. `public_html` o la raíz del sitio para `origenlab.cl`), vía FTP o administrador de archivos (cPanel).
-3. Asegurar que `index.html` esté en la raíz y que las rutas funcionen (HostGator suele servir `index.html` en carpetas; si no, ver `docs/deployment.md`).
+Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado actual: [docs/deployment-status.md](docs/deployment-status.md).
 
-Detalles: [docs/deployment.md](docs/deployment.md).
+## Estructura del proyecto
 
-## Estructura relevante
-
-- `src/config/site.ts` — Configuración central (nombre, email, dominio, etc.).
-- `src/layouts/Layout.astro` — Layout principal (español, meta, header/footer).
-- `src/pages/` — Páginas (index, nosotros, productos, marcas, contacto).
-- `src/components/` — Header, Footer, Hero, CtaSection.
-- `src/data/` — Datos de categorías y marcas (placeholders).
+- `src/config/site.ts` — Configuración central (nombre, dominio, email, baseUrl, nav).
+- `src/layouts/Layout.astro` — Layout principal (español, meta, canonical, Header/Footer).
+- `src/pages/` — Inicio, nosotros, productos, marcas, contacto; categorías en `categorias/[slug].astro`.
+- `src/components/` — Header, Footer, Hero, CtaSection, PageHeader, Card.
+- `src/data/` — Categorías y marcas (datos estáticos).
 - `src/styles/global.css` — Estilos globales y Tailwind.
+- `public/.htaccess` — Se copia a `dist/`; forzar HTTPS y cabeceras básicas en el servidor.
 
-Contacto del sitio: **contacto@origenlab.cl**
+## Documentación
+
+| Documento | Contenido |
+|-----------|-----------|
+| [docs/deployment.md](docs/deployment.md) | Pasos de despliegue y checklist antes del lanzamiento |
+| [docs/deployment-status.md](docs/deployment-status.md) | Estado actual, hosting, DNS, advertencias |
+| [docs/email-setup.md](docs/email-setup.md) | Email contacto@origenlab.cl (Titan, IMAP/SMTP, DKIM) |
+| [docs/legacy-mail-migration-notes.md](docs/legacy-mail-migration-notes.md) | Notas sobre migración de correo legacy (LabDelivery; proyecto aparte) |
+| [docs/security-audit-v1.md](docs/security-audit-v1.md) | Auditoría de seguridad y arquitectura v1 |
+| [CLAUDE.md](CLAUDE.md) | Instrucciones para asistencia con IA |
+
+## Repo y ramas
+
+- **GitHub:** repo remoto configurado.
+- **Ramas:** `main`, `dev`. Desarrollo en `dev`.
+
+**Contacto del sitio:** contacto@origenlab.cl
