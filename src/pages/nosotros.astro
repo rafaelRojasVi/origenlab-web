@@ -1,18 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaSection from '../components/CtaSection.astro';
 ---
 
 <Layout
   title="Nosotros — OrigenLab"
-  description="Conozca OrigenLab: equipamiento y soluciones para laboratorio en Valdivia, Chile."
+  description="Conozca OrigenLab: equipamiento y soluciones para laboratorio en Valdivia, Chile. Atención personalizada y asesoría técnica."
 >
-  <h1 class="text-2xl font-bold text-slate-900">Nosotros</h1>
-  <div class="mt-6 space-y-4 text-slate-600">
-    <p>
-      OrigenLab es una empresa dedicada al equipamiento y las soluciones para laboratorio con sede en Valdivia, Chile. Nuestro objetivo es apoyar a laboratorios, centros de investigación e instituciones con instrumentación, reactivos y asesoría técnica.
-    </p>
-    <p>
-      Trabajamos con estándares de calidad y brindamos un servicio cercano y profesional a nuestros clientes en la región y en el país.
-    </p>
+  <PageHeader
+    title="Nosotros"
+    lead="Somos una empresa dedicada al equipamiento y las soluciones para laboratorio, con sede en Valdivia. Nuestro objetivo es ser su aliado en instrumentación, reactivos y asesoría técnica."
+  />
+
+  <div class="mt-10 space-y-10">
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Qué hacemos</h2>
+      <p class="mt-3 text-slate-600">
+        Ofrecemos equipamiento de laboratorio, instrumentación de medición y análisis, reactivos, consumibles y mobiliario especializado. Brindamos asesoría técnica para la selección de equipos y suministros según las necesidades de cada proyecto o institución.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">A quién servimos</h2>
+      <p class="mt-3 text-slate-600">
+        Trabajamos con laboratorios de investigación, instituciones educativas, centros de salud, laboratorios clínicos e industriales, y empresas que requieren estándares de calidad y un proveedor confiable en la región de Los Ríos y el resto de Chile.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold text-slate-900">Nuestro compromiso</h2>
+      <p class="mt-3 text-slate-600">
+        Nos comprometemos con la calidad de los productos que ofrecemos, el trato cercano y profesional, y la respuesta oportuna a consultas y cotizaciones. Su confianza es nuestra prioridad.
+      </p>
+    </section>
+  </div>
+
+  <div class="mt-14">
+    <CtaSection
+      title="¿Desea conocer nuestra oferta o solicitar una cotización?"
+      description="Estamos a su disposición por correo electrónico."
+      ctaText="Contactar"
+      ctaHref="/contacto"
+    />
   </div>
 </Layout>

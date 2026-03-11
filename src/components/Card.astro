@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  description?: string;
+  class?: string;
+}
+
+const { title, href, description, class: className = '' } = Astro.props;
+---
+
+{href ? (
+  <a href={href} class={`block rounded-lg border border-slate-200 p-5 transition hover:border-slate-300 hover:bg-slate-50 ${className}`}>
+    <h2 class="font-semibold text-slate-900">{title}</h2>
+    {description && <p class="mt-1 text-sm text-slate-600">{description}</p>}
+  </a>
+) : (
+  <div class={`rounded-lg border border-slate-200 p-5 ${className}`}>
+    <h2 class="font-semibold text-slate-900">{title}</h2>
+    {description && <p class="mt-1 text-sm text-slate-600">{description}</p>}
+  </div>
+)}

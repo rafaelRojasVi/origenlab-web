@@ -10,7 +10,7 @@ export interface Category {
 }
 
 export const categories: Category[] = [
-  { id: '1', name: 'Instrumentación', slug: 'instrumentacion', description: 'Equipos de medición y análisis' },
-  { id: '2', name: 'Reactivos y consumibles', slug: 'reactivos-consumibles', description: 'Reactivos y material de laboratorio' },
-  { id: '3', name: 'Equipos de laboratorio', slug: 'equipos-laboratorio', description: 'Mobiliario y equipos generales' },
+  { id: '1', name: 'Instrumentación', slug: 'instrumentacion', description: 'Equipos de medición, análisis y control de calidad para laboratorio.' },
+  { id: '2', name: 'Reactivos y consumibles', slug: 'reactivos-consumibles', description: 'Reactivos, material de laboratorio y consumibles para sus ensayos.' },
+  { id: '3', name: 'Equipos de laboratorio', slug: 'equipos-laboratorio', description: 'Mobiliario, equipos generales y accesorios para laboratorio.' },
 ];
