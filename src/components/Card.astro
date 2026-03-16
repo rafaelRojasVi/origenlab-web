@@ -10,13 +10,19 @@ const { title, href, description, class: className = '' } = Astro.props;
 ---
 
 {href ? (
-  <a href={href} class={`block rounded-lg border border-slate-200 p-5 transition hover:border-slate-300 hover:bg-slate-50 ${className}`}>
-    <h2 class="font-semibold text-slate-900">{title}</h2>
-    {description && <p class="mt-1 text-sm text-slate-600">{description}</p>}
+  <a
+    href={href}
+    class={`card-elevated group block border-l-4 border-l-brand-600 ${className}`}
+  >
+    <h2 class="font-bold text-brand-950 transition group-hover:text-brand-700">{title}</h2>
+    {description && <p class="mt-2 text-sm leading-relaxed text-slate-600">{description}</p>}
+    <p class="mt-4 text-sm font-semibold text-brand-700 opacity-0 transition group-hover:opacity-100">
+      Ver categoría →
+    </p>
   </a>
 ) : (
-  <div class={`rounded-lg border border-slate-200 p-5 ${className}`}>
-    <h2 class="font-semibold text-slate-900">{title}</h2>
-    {description && <p class="mt-1 text-sm text-slate-600">{description}</p>}
+  <div class={`card-elevated border-l-4 border-l-brand-600 ${className}`}>
+    <h2 class="font-bold text-brand-950">{title}</h2>
+    {description && <p class="mt-2 text-sm text-slate-600">{description}</p>}
   </div>
 )}

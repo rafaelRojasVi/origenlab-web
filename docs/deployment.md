@@ -8,7 +8,7 @@ Sitio estático generado con Astro. El resultado del build son HTML, CSS y asset
 - [ ] Subir **todo** el contenido de `dist/` al directorio público (p. ej. `public_html`), incluyendo **`.htaccess`** (en FTP/cPanel, activar “mostrar archivos ocultos” si no lo ve).
 - [ ] Comprobar que la raíz del sitio contiene `index.html` y `.htaccess`.
 - [ ] Abrir el sitio por **HTTP** (ej. `http://origenlab.cl`) y verificar que redirige a **HTTPS**.
-- [ ] Revisar en el navegador: Inicio, Nosotros, Productos, Marcas, Contacto; y un enlace de categoría (ej. Instrumentación).
+- [ ] Revisar en el navegador: Inicio, Nosotros, Productos, Marcas, Contacto; una categoría (ej. alimentos); opcional `robots.txt` y `sitemap.xml` en la raíz del sitio.
 - [ ] Probar el enlace “Enviar correo” en Contacto (debe abrir el cliente de correo con contacto@origenlab.cl).
 - [ ] Confirmar en cPanel que el correo contacto@origenlab.cl está creado y operativo.
 

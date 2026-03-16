@@ -27,7 +27,7 @@ Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado act
 - `src/config/site.ts` — Configuración central (nombre, dominio, email, baseUrl, nav).
 - `src/layouts/Layout.astro` — Layout principal (español, meta, canonical, Header/Footer).
 - `src/pages/` — Inicio, nosotros, productos, marcas, contacto; categorías en `categorias/[slug].astro`.
-- `src/components/` — Header, Footer, Hero, CtaSection, PageHeader, Card.
+- `src/components/` — Header, Footer, Hero, QuoteCTA, PageHeader, Card.
 - `src/data/` — Categorías y marcas (datos estáticos).
 - `src/styles/global.css` — Estilos globales y Tailwind.
 - `public/.htaccess` — Se copia a `dist/`; forzar HTTPS y cabeceras básicas en el servidor.
@@ -40,6 +40,7 @@ Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado act
 | [docs/deployment-status.md](docs/deployment-status.md) | Estado actual, hosting, DNS, advertencias |
 | [docs/email-setup.md](docs/email-setup.md) | Email contacto@origenlab.cl (Titan, IMAP/SMTP, DKIM) |
 | [docs/legacy-mail-migration-notes.md](docs/legacy-mail-migration-notes.md) | Notas sobre migración de correo legacy (LabDelivery; proyecto aparte) |
+| [docs/email-archive-locations.md](docs/email-archive-locations.md) | Ubicaciones del archivo de correo (raw PST, SQLite, rutas Windows/WSL) |
 | [docs/security-audit-v1.md](docs/security-audit-v1.md) | Auditoría de seguridad y arquitectura v1 |
 | [CLAUDE.md](CLAUDE.md) | Instrucciones para asistencia con IA |
 

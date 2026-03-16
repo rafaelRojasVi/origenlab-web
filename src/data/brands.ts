@@ -1,6 +1,6 @@
 /**
- * Brands / marcas – placeholder data for future extension.
- * Used by marcas page and product associations.
+ * Marcas representadas — lista formal pendiente.
+ * No inventar marcas; al confirmar, añadir entradas con name, slug y opcional url.
  */
 export interface Brand {
   id: string;
@@ -9,7 +9,11 @@ export interface Brand {
   url?: string;
 }
 
+/** Hasta tener marcas confirmadas, una sola entrada honesta evita claims falsos. */
 export const brands: Brand[] = [
-  { id: '1', name: 'Marcas disponibles', slug: 'marcas-disponibles' },
-  { id: '2', name: 'Catálogo en actualización', slug: 'catalogo-actualizacion' },
+  {
+    id: 'pending',
+    name: 'Marcas en actualización',
+    slug: 'marcas-en-actualizacion',
+  },
 ];
