@@ -1,0 +1,100 @@
+---
+description: Repo-wide rules for the OrigenLab website
+alwaysApply: true
+---
+
+# OrigenLab repo-wide rules
+
+This repository is for the OrigenLab website.
+
+## Business constraints
+
+Assume the following are true unless repo data says otherwise:
+- OrigenLab operates in Chile
+- the company sells laboratory equipment
+- the website is primarily informational and quotation-focused
+- contact should route through email, WhatsApp, phone, or form
+- current audience includes labs, universities, clinics, hospitals, and I+D industries
+
+## Truthfulness rules
+
+Never invent:
+- brands
+- certifications
+- partnerships
+- exact technical specs
+- official distributor status
+- customer logos
+- case studies
+- SLA promises
+- warranty details not explicitly documented
+
+If missing data is required, leave a clear placeholder or write neutral copy.
+
+## Writing rules
+
+For public-facing content:
+- write in Spanish unless the task explicitly asks for English
+- keep tone professional and technically credible
+- prefer plain, clear Chile-appropriate business Spanish
+- avoid hype and generic fluff
+- keep CTAs practical and direct
+
+Preferred CTA patterns:
+- Solicitar cotización
+- Contactar por WhatsApp
+- Escribir a contacto@origenlab.cl
+- Ver categorías de productos
+
+## Product/site modeling rules
+
+Prefer simple structures over complex abstractions.
+Good candidates for data files:
+- categories
+- services
+- contact info
+- downloadable catalogs or fichas técnicas
+- FAQ entries
+- future brand list
+
+Do not introduce a backend, database, or CMS unless the requirement clearly justifies it.
+
+## Code quality rules
+
+Prefer:
+- small reusable Astro components
+- data-driven rendering from simple TS/JSON structures
+- semantic HTML
+- accessible forms and buttons
+- minimal JS
+- maintainable folder structure
+
+Avoid:
+- duplicated sections across pages
+- oversized components
+- one-off utility patterns without reuse
+- unnecessary state
+- premature abstractions
+
+## Contact details
+
+Use these defaults unless updated:
+- contacto@origenlab.cl
+- +56 9 6256 7816
+- Oettinger 51, depto 206, Valdivia, Chile
+- horario 09:00–18:00
+
+## Review behavior
+
+When proposing changes, prefer the smallest clean change that improves:
+- clarity
+- maintainability
+- conversion to quote/contact
+- factual safety
+
+## Source of truth and docs (always consult when relevant)
+
+- **`src/data/*`** is canonical for business facts; do not rely on stale hardcoded copy when data exists there.
+- **Deployment / hosting** → read `docs/deployment.md` before changing build output or deploy steps.
+- **Copy safety / prior audit** → read `docs/security-audit-v1.md` when changing claims, external links, or trust language.
+- Full repo rules and reference list → **`AGENTS.md`** (avoid duplicating long policy here; route there for detail).

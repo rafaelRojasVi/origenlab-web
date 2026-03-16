@@ -1,0 +1,61 @@
+---
+description: Rules for Astro build and static deployment workflows
+globs:
+  - "astro.config.*"
+  - "package.json"
+  - "src/**"
+  - "public/**"
+---
+
+# Astro deployment rules for OrigenLab
+
+This site should stay compatible with simple static hosting.
+
+## Core assumptions
+
+Assume:
+- Astro static output
+- build output in `dist/`
+- deployment to shared hosting such as HostGator
+- no server runtime in production unless explicitly introduced and justified
+
+## Deployment safety checks
+
+Before treating a deployment change as complete, verify:
+- `npm run check` passes if configured
+- `npm run build` passes
+- output is generated in `dist/`
+- references to assets are correct
+- there is no nested `dist/dist`
+- shared hosting upload instructions match the produced files
+
+## Architecture guidance
+
+Prefer:
+- static pages
+- static assets in `public/`
+- content/data rendered at build time
+- simple forms or external integrations
+
+Avoid:
+- server-only patterns unless clearly required
+- features that depend on Node running on the host
+- unnecessary dynamic complexity
+
+## Change behavior
+
+If asked to "prepare for deployment", do all of these:
+1. inspect build scripts
+2. confirm output directory
+3. check asset/path assumptions
+4. flag likely shared-hosting issues
+5. provide the smallest reliable deployment guidance
+
+## Common failure modes to guard against
+
+Watch for:
+- broken relative paths
+- incorrect base path config
+- wrong asset references
+- uploading the wrong folder level
+- leaving old files in hosting root that conflict with new build
