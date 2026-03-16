@@ -3,6 +3,8 @@
 Sitio estático para **OrigenLab**, empresa de equipamiento y soluciones para laboratorio (Valdivia, Chile).  
 **Stack:** Astro + Tailwind CSS. Contenido en español. Despliegue manual a HostGator (public_html).
 
+**Alcance del negocio:** venta de equipos para laboratorios de servicio e investigación en Chile; líneas en alimentos, control de calidad y laboratorio clínico. Audiencia: laboratorios, universidades, clínicas, hospitales, I+D. Datos completos (contacto, servicios, tono, prompt para cotizaciones): [docs/company-scope.md](docs/company-scope.md). Código fuente de verdad: `src/data/*`.
+
 ## Comandos
 
 | Comando | Descripción |
@@ -40,6 +42,7 @@ Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado act
 | [docs/deployment-status.md](docs/deployment-status.md) | Estado actual, hosting, DNS, advertencias |
 | [docs/email-setup.md](docs/email-setup.md) | Email contacto@origenlab.cl (Titan, IMAP/SMTP, DKIM) |
 | [docs/legacy-mail-migration-notes.md](docs/legacy-mail-migration-notes.md) | Notas sobre migración de correo legacy (LabDelivery; proyecto aparte) |
+| [docs/company-scope.md](docs/company-scope.md) | Alcance, contacto, servicios, tono y prompt para redactar cotizaciones |
 | [docs/email-archive-locations.md](docs/email-archive-locations.md) | Ubicaciones del archivo de correo (raw PST, SQLite, rutas Windows/WSL) |
 | [docs/security-audit-v1.md](docs/security-audit-v1.md) | Auditoría de seguridad y arquitectura v1 |
 | [CLAUDE.md](CLAUDE.md) | Instrucciones para asistencia con IA |

@@ -24,7 +24,7 @@ Files under `docs/` are **not** loaded into context automatically. When a task m
 
 - Deployment, hosting, `dist/`, HostGator → `docs/deployment.md`
 - Prior security/link/claims decisions → `docs/security-audit-v1.md`
-- Future copy tone checklists → `docs/ai/*` if present (optional)
+- Full company scope (brief for humans/cotizations) → `docs/company-scope.md` (summary of `src/data/*` + prompt for quotation rewriting)
 - Email DB → business signal (prompt for another AI) → `docs/EMAIL_BUSINESS_SIGNAL_PROMPT.md`
 
 If a task touches copy, SEO, contact details, categories, deployment, or trust/safety language, consult the relevant reference above. **Do not invent facts** not present in the data layer or referenced docs.
