@@ -29,11 +29,16 @@ origenlab-web/
 │   └── styles/
 ├── public/                 # Assets estáticos (favicon, .htaccess, robots, sitemap)
 ├── docs/                   # Documentación (deploy, seguridad, alcance, email)
+├── .github/                # Plantilla de PR para revisión
 ├── .cursor/rules/          # Reglas para Cursor (siempre aplicadas en este repo)
 ├── .claude/skills/         # Skills para Claude (deploy, copy, etc.)
 ├── AGENTS.md               # Instrucciones para agentes IA (reglas, datos, tono)
 ├── CLAUDE.md               # Router rápido para Claude
-└── CONTRIBUTING.md         # Este archivo
+├── CONTRIBUTING.md         # Este archivo
+├── LICENSE                 # MIT — ver README
+├── .editorconfig           # Estilo de código consistente
+├── .gitattributes          # Line endings y binarios
+└── .nvmrc                  # Node 20 (opcional: nvm use)
 ```
 
 Los datos de negocio (empresa, contacto, categorías, servicios) están en **`src/data/*.ts`**. No duplicar en el código; usar esos módulos. Para copy y cotizaciones, el resumen está en **`docs/company-scope.md`**.
