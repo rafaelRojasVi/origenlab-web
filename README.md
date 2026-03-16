@@ -56,4 +56,7 @@ Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado act
 
 **Colaboradores y uso con Claude/Cursor:** ver [CONTRIBUTING.md](CONTRIBUTING.md) (estructura, dónde está cada cosa, reglas en `.cursor/rules/`, skills en `.claude/skills/`, alcance en `docs/company-scope.md`).
 
+## Licencia
+
+Este proyecto está bajo la [Licencia MIT](LICENSE).  
 **Contacto del sitio:** contacto@origenlab.cl
