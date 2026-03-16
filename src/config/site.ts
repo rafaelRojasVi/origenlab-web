@@ -1,20 +1,21 @@
+import { contact } from '../data/contact';
+import { company } from '../data/company';
+
 /**
  * Configuración central del sitio OrigenLab.
- * Usar para meta, footer, enlaces de contacto y texto compartido.
+ * Descripción corta SEO: derivada de company (evita duplicar narrativa).
  */
 export const site = {
   name: 'OrigenLab',
   domain: 'origenlab.cl',
   baseUrl: 'https://origenlab.cl',
-  email: 'contacto@origenlab.cl',
-  location: 'Valdivia, Chile',
-  tagline: 'Equipamiento y soluciones para laboratorio',
-  description:
-    'OrigenLab — equipamiento y soluciones para laboratorio en Valdivia, Chile. Instrumentación, reactivos y asesoría técnica.',
-  /** Placeholder: agregar número real cuando esté disponible */
-  phone: '' as string,
-  /** Placeholder: agregar número con código de país (ej. +56912345678) cuando esté disponible */
-  whatsapp: '' as string,
+  email: contact.email,
+  location: contact.locationPublic,
+  hours: contact.hours,
+  tagline: 'Equipos para laboratorio en todo Chile',
+  description: `${company.name}: equipos de laboratorio en ${company.geography}. Alimentos, control de calidad, laboratorio clínico. Cotización ${contact.email} · WhatsApp ${contact.phoneDisplay}.`,
+  phone: contact.phoneDisplay,
+  whatsapp: contact.phoneDisplay,
   nav: [
     { href: '/nosotros', label: 'Nosotros' },
     { href: '/productos', label: 'Productos' },

@@ -10,7 +10,7 @@ Auditoría enfocada para el sitio estático Astro desplegado en HostGator (sin b
 
 - **config**: `site.ts` centraliza nombre, dominio, email, navegación. Sin complejidad innecesaria.
 - **data**: `categories.ts` y `brands.ts` son datos estáticos; fáciles de extender.
-- **components**: Header, Footer, Hero, CtaSection, PageHeader, Card. Reutilización clara.
+- **components**: Header, Footer, Hero, QuoteCTA, PageHeader, Card. Reutilización clara.
 - **layouts**: Un solo layout (`Layout.astro`) con slot. Mantenible.
 - **pages**: Rutas planas (index, nosotros, productos, marcas, contacto) + `categorias/[slug]`. Coherente con sitio estático.
 

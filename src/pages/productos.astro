@@ -1,18 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import CtaSection from '../components/CtaSection.astro';
+import QuoteCTA from '../components/QuoteCTA.astro';
 import Card from '../components/Card.astro';
 import { categories } from '../data/categories';
+import { company } from '../data/company';
 ---
 
 <Layout
   title="Productos — OrigenLab"
-  description="Catálogo de equipamiento e instrumentación para laboratorio. Categorías: instrumentación, reactivos, consumibles, equipos. OrigenLab, Valdivia."
+  description={`Equipos para alimentos, control de calidad y laboratorio clínico. ${company.catalogNote}`}
 >
   <PageHeader
     title="Productos"
-    lead="Ofrecemos equipamiento, instrumentación, reactivos y consumibles para laboratorio. Explore las categorías y contáctenos para consultas de disponibilidad y cotizaciones."
+    lead={`${company.primaryOffer} en tres categorías. ${company.catalogNote}`}
   />
 
   <div class="mt-10">
@@ -30,11 +31,9 @@ import { categories } from '../data/categories';
   </div>
 
   <div class="mt-14">
-    <CtaSection
-      title="¿Busca un producto en particular?"
-      description="Contáctenos para consultas de disponibilidad, especificaciones y cotizaciones."
-      ctaText="Solicitar cotización"
-      ctaHref="/contacto"
+    <QuoteCTA
+      title="¿Busca un equipo en particular?"
+      description="Consulte por disponibilidad y cotización; sin compromiso."
     />
   </div>
 </Layout>

@@ -1,47 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import CtaSection from '../components/CtaSection.astro';
+import QuoteCTA from '../components/QuoteCTA.astro';
+import { company } from '../data/company';
 ---
 
 <Layout
   title="Nosotros — OrigenLab"
-  description="Conozca OrigenLab: equipamiento y soluciones para laboratorio en Valdivia, Chile. Atención personalizada y asesoría técnica."
+  description={`${company.name}, ${company.oneLiner} Base en Valdivia; atención en todo Chile.`}
 >
   <PageHeader
     title="Nosotros"
-    lead="Somos una empresa dedicada al equipamiento y las soluciones para laboratorio, con sede en Valdivia. Nuestro objetivo es ser su aliado en instrumentación, reactivos y asesoría técnica."
+    lead={company.oneLiner + ' Base operativa en Valdivia.'}
   />
 
   <div class="mt-10 space-y-10">
     <section>
       <h2 class="text-lg font-semibold text-slate-900">Qué hacemos</h2>
       <p class="mt-3 text-slate-600">
-        Ofrecemos equipamiento de laboratorio, instrumentación de medición y análisis, reactivos, consumibles y mobiliario especializado. Brindamos asesoría técnica para la selección de equipos y suministros según las necesidades de cada proyecto o institución.
+        Nos dedicamos a la venta de equipos para laboratorio, con foco en alimentos, control de
+        calidad y laboratorio clínico. Ofrecemos soporte, asesoría, garantía, e instalación o puesta
+        en marcha en equipos más complejos cuando corresponda. {company.catalogNote}
       </p>
     </section>
 
     <section>
       <h2 class="text-lg font-semibold text-slate-900">A quién servimos</h2>
       <p class="mt-3 text-slate-600">
-        Trabajamos con laboratorios de investigación, instituciones educativas, centros de salud, laboratorios clínicos e industriales, y empresas que requieren estándares de calidad y un proveedor confiable en la región de Los Ríos y el resto de Chile.
+        {company.audience.join(', ')}. Atendemos consultas y cotizaciones desde todo Chile.
       </p>
     </section>
 
     <section>
-      <h2 class="text-lg font-semibold text-slate-900">Nuestro compromiso</h2>
+      <h2 class="text-lg font-semibold text-slate-900">Cómo trabajamos</h2>
       <p class="mt-3 text-slate-600">
-        Nos comprometemos con la calidad de los productos que ofrecemos, el trato cercano y profesional, y la respuesta oportuna a consultas y cotizaciones. Su confianza es nuestra prioridad.
+        Priorizamos claridad en la oferta, respuestas por los canales indicados en contacto y
+        acuerdos alineados al equipo y al fabricante. Sin prometer plazos ni coberturas que no estén
+        confirmados por escrito.
       </p>
     </section>
   </div>
 
   <div class="mt-14">
-    <CtaSection
-      title="¿Desea conocer nuestra oferta o solicitar una cotización?"
-      description="Estamos a su disposición por correo electrónico."
-      ctaText="Contactar"
-      ctaHref="/contacto"
+    <QuoteCTA
+      title="¿Cotización o consulta?"
+      description="Correo, WhatsApp o página de contacto con dirección y horario."
     />
   </div>
 </Layout>

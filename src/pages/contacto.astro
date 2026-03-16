@@ -2,18 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { site } from '../config/site';
+import { contact, whatsappUrl, telUrl } from '../data/contact';
+import { company } from '../data/company';
 ---
 
 <Layout
   title="Contacto — OrigenLab"
-  description="Contacte a OrigenLab. Correo contacto@origenlab.cl. Equipamiento para laboratorio en Valdivia, Chile."
+  description={`${site.name}: ${contact.email} · ${contact.phoneDisplay} · ${site.location} · Lun–vie ${site.hours} · Atención en ${company.geography}.`}
 >
   <PageHeader
     title="Contacto"
-    lead="Para consultas, cotizaciones o asesoría técnica, contáctenos por correo. Le responderemos a la brevedad."
+    lead="Cotizaciones y consultas por correo, teléfono o WhatsApp. Atención en todo Chile."
   />
 
-  <div class="mt-10 rounded-lg border border-slate-200 bg-slate-50/50 p-6">
+  <div class="mt-10 rounded-2xl border border-brand-100 bg-white p-8 shadow-sm">
     <dl class="space-y-4 text-slate-700">
       <div>
         <dt class="font-medium text-slate-900">Correo</dt>
@@ -22,16 +24,40 @@ import { site } from '../config/site';
         </dd>
       </div>
       <div>
+        <dt class="font-medium text-slate-900">Teléfono</dt>
+        <dd>
+          <a href={telUrl()} class="link-muted">{contact.phoneDisplay}</a>
+        </dd>
+      </div>
+      <div>
+        <dt class="font-medium text-slate-900">WhatsApp</dt>
+        <dd>
+          <a href={whatsappUrl()} class="link-muted" target="_blank" rel="noopener noreferrer"
+            >WhatsApp</a
+          >
+        </dd>
+      </div>
+      <div>
         <dt class="font-medium text-slate-900">Ubicación</dt>
         <dd>{site.location}</dd>
       </div>
       <div>
-        <dt class="font-medium text-slate-900">Horario de atención</dt>
-        <dd class="text-slate-600">Lunes a viernes. Consulte por correo.</dd>
+        <dt class="font-medium text-slate-900">Horario</dt>
+        <dd class="text-slate-600">Lun–vie {site.hours}</dd>
       </div>
     </dl>
-    <p class="mt-6">
-      <a href={`mailto:${site.email}`} class="btn-primary">Enviar correo</a>
+    <p class="mt-6 flex flex-wrap gap-3">
+      <a href={`mailto:${site.email}`} class="btn-primary" aria-label={`Enviar correo a ${site.email}`}
+        >Enviar correo</a
+      >
+      <a
+        href={whatsappUrl()}
+        class="btn-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp"
+        >WhatsApp</a
+      >
     </p>
   </div>
 </Layout>

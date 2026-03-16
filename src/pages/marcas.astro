@@ -1,39 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import CtaSection from '../components/CtaSection.astro';
+import QuoteCTA from '../components/QuoteCTA.astro';
 import Card from '../components/Card.astro';
 import { brands } from '../data/brands';
+import { company } from '../data/company';
+import { site } from '../config/site';
 ---
 
 <Layout
   title="Marcas — OrigenLab"
-  description="Marcas y proveedores con los que trabajamos. Equipamiento e instrumentación para laboratorio. OrigenLab, Valdivia."
+  description={`Listado de marcas en actualización. ${company.primaryOffer}, atención en ${company.geography}. ${site.location}.`}
 >
   <PageHeader
     title="Marcas"
-    lead="Trabajamos con fabricantes y distribuidores reconocidos en equipamiento e instrumentación para laboratorio. Consulte disponibilidad y cotizaciones para las marcas que necesite."
+    lead="La relación de marcas representadas se actualiza según disponibilidad y acuerdos comerciales. Consulte por la marca o equipo que necesite."
   />
 
   <div class="mt-10">
     <p class="text-slate-600">
-      Seleccionamos a nuestros proveedores según estándares de calidad y servicio. Si busca una marca en particular o desea recomendaciones, contáctenos.
+      Si busca una marca en particular, cotización o recomendación según su laboratorio, escríbanos; le orientamos sin compromiso.
     </p>
     <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {brands.map((brand) => (
         <li>
-          <Card title={brand.name} description="Disponible bajo consulta" />
+          <Card
+            title={brand.name}
+            description="Lista formal en actualización. Consulte por correo o WhatsApp."
+          />
         </li>
       ))}
     </ul>
   </div>
 
   <div class="mt-14">
-    <CtaSection
-      title="¿Necesita una marca o producto específico?"
-      description="Consúltenos por disponibilidad y condiciones."
-      ctaText="Contactar"
-      ctaHref="/contacto"
+    <QuoteCTA
+      title="¿Marca o equipo específico?"
+      description="Consúltenos por disponibilidad y condiciones; respondemos por correo o WhatsApp."
     />
   </div>
 </Layout>

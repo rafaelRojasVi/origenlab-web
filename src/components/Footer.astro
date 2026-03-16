@@ -1,20 +1,46 @@
 ---
 import { site } from '../config/site';
+import { contact, whatsappUrl, telUrl } from '../data/contact';
 ---
 
-<footer class="mt-16 border-t border-slate-200">
-  <div class="mx-auto max-w-6xl px-6 py-8">
-    <div class="flex flex-wrap items-center justify-between gap-6 text-sm text-slate-600">
-      <div>
-        <p class="font-medium text-slate-800">{site.name}</p>
-        <p>{site.location}</p>
+<footer class="mt-20 border-t border-brand-900/20 bg-gradient-to-b from-brand-950 to-brand-900 text-brand-100">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <nav
+      class="mb-8 flex flex-wrap gap-x-8 gap-y-2 border-b border-white/10 pb-8 text-sm font-semibold"
+      aria-label="Enlaces útiles"
+    >
+      <a href="/productos" class="text-white transition hover:text-brand-200">Productos y categorías</a>
+      <a href="/contacto" class="text-white transition hover:text-brand-200">Contacto y cotización</a>
+    </nav>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_auto]">
+      <div class="space-y-3 text-sm">
+        <p class="text-lg font-bold text-white">{site.name}</p>
+        <p class="text-brand-200">{site.location}</p>
         <p>
-          <a href={`mailto:${site.email}`} class="link-muted">{site.email}</a>
+          <a href={`mailto:${site.email}`} class="text-white underline decoration-brand-400/50 underline-offset-2 hover:decoration-brand-200"
+            >{site.email}</a
+          >
         </p>
+        <p>
+          <a href={telUrl()} class="text-white hover:text-brand-200"
+            ><span class="text-brand-300">Teléfono</span> · {contact.phoneDisplay}</a
+          >
+        </p>
+        <p>
+          <a
+            href={whatsappUrl()}
+            class="text-white hover:text-brand-200"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir WhatsApp"
+            >WhatsApp</a
+          >
+        </p>
+        <p class="text-brand-300">Lun–vie {site.hours}</p>
       </div>
-      <p>
-        <a href="/contacto" class="link-muted font-medium">Contacto</a>
-      </p>
     </div>
+    <p class="mt-10 border-t border-white/10 pb-28 pt-8 text-center text-xs text-brand-400 sm:pb-24 md:pb-20">
+      © {new Date().getFullYear()} {site.name} · Equipos para laboratorio en Chile
+    </p>
   </div>
 </footer>
