@@ -26,6 +26,7 @@ Files under `docs/` are **not** loaded into context automatically. When a task m
 - Prior security/link/claims decisions → `docs/security-audit-v1.md`
 - Full company scope (brief for humans/cotizations) → `docs/company-scope.md` (summary of `src/data/*` + prompt for quotation rewriting)
 - Email DB → business signal (prompt for another AI) → `docs/EMAIL_BUSINESS_SIGNAL_PROMPT.md`
+- Collaborator and AI onboarding (structure, Cursor rules, Claude skills) → `CONTRIBUTING.md`
 
 If a task touches copy, SEO, contact details, categories, deployment, or trust/safety language, consult the relevant reference above. **Do not invent facts** not present in the data layer or referenced docs.
 

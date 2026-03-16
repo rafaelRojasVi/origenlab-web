@@ -46,10 +46,14 @@ Checklist completo y pasos: [docs/deployment.md](docs/deployment.md). Estado act
 | [docs/email-archive-locations.md](docs/email-archive-locations.md) | Ubicaciones del archivo de correo (raw PST, SQLite, rutas Windows/WSL) |
 | [docs/security-audit-v1.md](docs/security-audit-v1.md) | Auditoría de seguridad y arquitectura v1 |
 | [CLAUDE.md](CLAUDE.md) | Instrucciones para asistencia con IA |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Guía para colaboradores y uso con Claude/Cursor (reglas, skills, alcance) |
 
 ## Repo y ramas
 
 - **GitHub:** repo remoto configurado.
 - **Ramas:** `main`, `dev`. Desarrollo en `dev`.
+- **Un solo proyecto:** un sitio Astro en este repo (no es un monorepo con varios paquetes).
+
+**Colaboradores y uso con Claude/Cursor:** ver [CONTRIBUTING.md](CONTRIBUTING.md) (estructura, dónde está cada cosa, reglas en `.cursor/rules/`, skills en `.claude/skills/`, alcance en `docs/company-scope.md`).
 
 **Contacto del sitio:** contacto@origenlab.cl
