@@ -10,6 +10,8 @@
 | Deploy, `dist/`, HostGator | `docs/deployment.md` |
 | Security / prior claims decisions | `docs/security-audit-v1.md` |
 | Reusable workflows | `.claude/skills/*/SKILL.md` |
+| Collaborator / AI onboarding | `CONTRIBUTING.md` |
+| Company scope & quotation prompt | `docs/company-scope.md` |
 
 Stack: Astro + Tailwind, static site, Spanish-first. Build: `npm run build` → `dist/`.
 
