@@ -1,0 +1,74 @@
+# OrigenLab monorepo — root ignores (see also apps/web/.gitignore, apps/email-pipeline/.gitignore)
+
+# --- Web (Astro) & Node ---
+**/node_modules/
+**/.astro/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Python ---
+**/.venv/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+**/build/
+**/wheels/
+
+# Build / packaging output (Astro dist + Python wheel build)
+**/dist/
+
+# --- Secrets & env ---
+.env
+.env.local
+.env.*.local
+.env.production
+
+# --- OS / editors ---
+.DS_Store
+Thumbs.db
+**/.idea/
+
+# --- Email pipeline (explicit paths so we never ignore apps/web/src/data/) ---
+apps/email-pipeline/data/
+apps/email-pipeline/tmp/
+apps/email-pipeline/logs/
+apps/email-pipeline/reports/out/*
+!apps/email-pipeline/reports/out/README.md
+!apps/email-pipeline/reports/out/.gitkeep
+
+# Email archive & databases
+*.pst
+*.PST
+*.mbox
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+*.jsonl
+
+apps/email-pipeline/.streamlit/secrets.toml
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Keys / certs
+*.pem
+id_rsa
+id_rsa.pub
+*.p12
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Web deploy zips (generated)
+**/origenlab-deploy.zip
+**/origenlab-dist.zip

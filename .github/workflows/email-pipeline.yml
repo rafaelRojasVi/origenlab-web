@@ -1,0 +1,26 @@
+name: email-pipeline
+
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - "apps/email-pipeline/**"
+      - ".github/workflows/email-pipeline.yml"
+  pull_request:
+    paths:
+      - "apps/email-pipeline/**"
+      - ".github/workflows/email-pipeline.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/email-pipeline
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --group dev --frozen
+      - run: uv run pytest
