@@ -1,0 +1,26 @@
+.git
+.github
+.cursor
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.python-version
+
+# Local outputs / data
+reports/out/
+reports/out/**/*
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# Large local data trees
+data/
+tmp/
+logs/
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/

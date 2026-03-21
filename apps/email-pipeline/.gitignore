@@ -1,0 +1,66 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+wheels/
+
+# Env — never commit secrets or machine-specific paths
+.env
+.env.local
+.env.*.local
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local data dirs (real PST/mbox/SQLite live outside repo; see .env.example)
+data/
+tmp/
+logs/
+
+# Generated reports under repo (may contain PII / client data).
+# Only reports/out/README.md and reports/out/.gitkeep are tracked — see root README "GitHub & secrets".
+reports/out/*
+!reports/out/README.md
+!reports/out/.gitkeep
+
+# Email archive & databases (never push real mail or mart copies)
+*.pst
+*.PST
+*.mbox
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+*.jsonl
+
+# Streamlit Cloud / local secrets
+.streamlit/secrets.toml
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Keys / certs (extra safety)
+*.pem
+id_rsa
+id_rsa.pub
+*.p12
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Lead / procurement downloads (local only; can be large or sensitive)
+scripts/leads/input/*
+!scripts/leads/input/.gitkeep

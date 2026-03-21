@@ -1,0 +1,56 @@
+[project]
+name = "origenlab-email-pipeline"
+version = "0.1.0"
+description = "PST → mbox → SQLite → JSONL; optional ML embeddings (WSL + CUDA)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "hdbscan>=0.8.41",
+    "orjson>=3.9",
+    "pydantic>=2",
+    "pydantic-settings>=2",
+    "python-dotenv>=1",
+    "tqdm>=4.66",
+    "pymupdf>=1.24",
+    "python-docx>=1.1",
+    "openpyxl>=3.1",
+]
+
+# ML stack: use `uv sync --group ml` so torch resolves from cu129 (CUDA), not PyPI CPU.
+[dependency-groups]
+dev = ["pytest>=8"]
+ui = [
+    "pandas<3",
+    "streamlit>=1.36",
+]
+ml = [
+    "numpy==2.3.5",
+    "torch==2.8.0",
+    "torchvision==0.23.0",
+    "torchaudio==2.8.0",
+    "sentence-transformers==5.3.0",
+    "faiss-cpu==1.13.2",
+    "scikit-learn>=1.5",
+    "pandas<3",
+    "orjson==3.11.7",
+    "tqdm==4.67.3",
+    "python-dotenv==1.2.2",
+]
+
+# CUDA wheels live on PyTorch’s index only; explicit index avoids pulling unrelated deps from there.
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu129" }
+torchvision = { index = "pytorch-cu129" }
+torchaudio = { index = "pytorch-cu129" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/origenlab_email_pipeline"]

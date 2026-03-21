@@ -1,0 +1,110 @@
+# Lead pipeline scripts (v1)
+
+File-based ingest and normalization for Chile external leads. Run from **repo root** with `uv run python scripts/leads/<script>.py`.
+
+## Order of execution
+
+1. **Ensure schema** — `normalize_leads.py --ensure-schema-only` (creates lead tables if missing).
+2. **Ingest** — `fetch_chilecompra.py --file <path>`, `fetch_inn_labs.py --file <path>`, `fetch_corfo_centers.py --file <path>` (each optional if you have no file).
+3. **Normalize** — `normalize_leads.py` (raw → lead_master).
+4. **Score** — `leads_score.py` (priority_score, priority_reason).
+5. **Match** — `match_leads_to_mart.py` (lead_master vs organization_master → lead_matches_existing_orgs).
+6. **Export** — `export_leads_csv.py --out <path>`.
+7. **Shortlist (weekly)** — `export_leads_shortlist.py --out <path>` (high_fit/medium_fit prioritized).
+8. **QA/inspection** — `inspect_leads_quality.py` (counts + top leads).
+9. **Client review CSV** — `export_client_review_csv.py --out <path>` (includes archive comparison + existing contacts).
+10. **Contact-hunt sheet (v1.2)** — `export_contact_hunt_sheet.py --out <path>` (estructura para hunting de contactos en español).
+11. **Merge + import hunt CSV** — `merge_contact_hunt_enrichment.py` (Deep Research → mismo CSV), luego validar con `validate_contact_hunt_alignment.py` (misma población de `id_lead` que `leads_contact_hunt_current.csv`), después `import_contact_hunt_to_sqlite.py` (recomendado: `--require-aligned-with` apuntando al hunt actual).
+12. **Weekly canonical focus (safe mode)** — `run_weekly_focus.py` (genera CSV operativo + resumen ES con clasificación USAR/REFERENCIA/NO OPERATIVO).
+13. **Limpiar `active/` + deepsearch + CSV unificado** — `prepare_active_workspace.py` (mantiene en `active/` solo foco semanal + resumen + hunt current ± for_deepsearch; archiva otros CSV; opcional `--deepsearch` y `--unified`).
+14. **Paquete cliente (HTML + MD + anexo)** — `uv run python scripts/reports/build_leads_client_pack.py` → `reports/out/client_pack_latest/`. Ver `docs/REPORTS_AND_CLIENT_PACK.md`.
+15. **DR50 ready-8 → hunt + top20 informe** — `apply_ready8_contact_patch.py` (actualiza `leads_contact_hunt_current.csv` desde `leads_dr50_ready_candidates.csv`, escribe `leads_contact_hunt_current_ready8_patch.csv`, `leads_top20_for_client_report.csv`, `docs/READY8_AND_TOP20_REPORTING_PLAN.md`). Luego import + `audit_contact_readiness.py`.
+16. **Reconciliación DR 50 filas (solo análisis)** — `reconcile_deepresearch_50_with_current_cohort.py` → CSVs `leads_dr50_*` y `docs/DEEP_RESEARCH_RECONCILIATION.md`.
+
+Or run the full pipeline. Sample CSVs in `samples/` let you run without real data:
+
+```bash
+export LEADS_CHILECOMPRA_FILE=scripts/leads/samples/chilecompra_sample.csv
+export LEADS_INN_FILE=scripts/leads/samples/inn_labs_sample.csv
+export LEADS_CORFO_FILE=scripts/leads/samples/corfo_centers_sample.csv
+export LEADS_EXPORT_PATH=reports/out/leads_export.csv
+bash scripts/leads/run_leads_pipeline.sh
+```
+
+If a `LEADS_*_FILE` path is set but the file does not exist, that source is skipped and a “file not found” message is printed (the pipeline continues). Use `--skip-fetch` to run normalize → score → match → export without re-reading input files.
+
+## Shortlist + QA
+
+```bash
+# Weekly shortlist (exclude low_fit by default)
+uv run python scripts/leads/export_leads_shortlist.py --out reports/out/leads_shortlist.csv --limit 200
+
+# Include low_fit (if you want to browse everything, still ordered)
+uv run python scripts/leads/export_leads_shortlist.py --out reports/out/leads_shortlist_all.csv --include-low --limit 500
+
+# QA counts + top leads
+uv run python scripts/leads/inspect_leads_quality.py --top 20
+
+# Client-friendly review file (best for emailing/sharing)
+uv run python scripts/leads/export_client_review_csv.py --out reports/out/leads_client_review.csv --limit 250
+
+# Contact-hunt sheet (v1.2), Spanish headers for manual/semi-assisted enrichment
+uv run python scripts/leads/export_contact_hunt_sheet.py --out reports/out/leads_contact_hunt_es.csv --limit 200
+```
+
+## Local Web UI (CSV download)
+
+If your client is on the same WiFi/LAN, you can host a simple authenticated page (no SQLite exposed).
+
+1. Start server:
+```bash
+export LEADS_WEB_USER="cliente"
+export LEADS_WEB_PASS="cambia-este-password"
+uv run python scripts/leads/run_contact_hunt_web_server.py --port 8000
+```
+
+2. From your client’s browser, open:
+`http://<tu-ip-de-red>:8000/`
+
+3. Login with the same username/password.
+
+
+## Expected CSV formats
+
+- **ChileCompra:** CSV or JSON. Columns often include: id/codigo, titulo/title, comprador/buyer, url/link, description, region, contacto_email, telefono.
+- **INN labs:** CSV with columns such as: nombre, lab_name, area, region, ciudad, sitio, website, email, contacto, telefono, id, codigo.
+- **CORFO centers:** CSV with columns such as: centro, nombre_centro, organizacion, region, ciudad, sitio, website, email, contacto, director, telefono, area, lineas, id, codigo.
+
+See [docs/LEAD_PIPELINE.md](../../docs/LEAD_PIPELINE.md) for full column lists and [docs/CHILE_LEAD_SOURCES.md](../../docs/CHILE_LEAD_SOURCES.md) for source URLs.
+
+## SOP semanal corto (6 comandos)
+
+```bash
+# 1) Normaliza/actualiza leads en DB (si ya hiciste fetch, basta normalize)
+uv run python scripts/leads/normalize_leads.py
+
+# 2) Score
+uv run python scripts/leads/leads_score.py
+
+# 3) Match contra mart (para net-new vs ya conocido)
+uv run python scripts/leads/match_leads_to_mart.py
+
+# 4) Salidas core (truth semanal)
+uv run python scripts/leads/export_leads_shortlist.py --out reports/out/leads_shortlist.csv --limit 200
+uv run python scripts/leads/export_client_review_csv.py --out reports/out/leads_client_review.csv --limit 250
+
+# 5) Hoja operativa de hunting (IDs actuales)
+uv run python scripts/leads/export_contact_hunt_sheet.py --out reports/out/leads_contact_hunt_current.csv --limit 200
+
+# 6) Resumen canónico semanal + CSV foco
+uv run python scripts/leads/run_weekly_focus.py
+
+# 7) (Opcional) Dejar active/ limpio + slice Deep Search + CSV unificado (ejecutar **después** del paso 6)
+uv run python scripts/leads/prepare_active_workspace.py --deepsearch --unified
+```
+
+Qué esperar:
+- `reports/out/active/leads_weekly_focus.csv`: lista priorizada para ejecutar semana.
+- `reports/out/active/leads_weekly_focus_summary_es.md`: métricas DB + alertas + clasificación de archivos.
+
+**Convención mínima en `active/`:** usar solo `leads_shortlist_es.csv` y `leads_client_review_es.csv` (los `.csv` sin `_es` se archivan con `prepare_active_workspace.py`). Un solo hunt operativo: `leads_contact_hunt_current.csv` → merge → `leads_contact_hunt_current_merged.csv`. Para Deep Search: `leads_contact_hunt_for_deepsearch.csv`. Vista todo-en-uno: `leads_active_unified.csv` (`run_weekly_focus` + hunt por `id_lead`).
