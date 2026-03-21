@@ -21,9 +21,11 @@ npm run build
 
 ```bash
 cd apps/email-pipeline
-uv sync
+uv sync --group dev --group ui
 uv run pytest
 ```
+
+(`--group ui` is required for Streamlit-related tests; default `uv sync` is enough to run the core pipeline only.)
 
 ## CI
 
