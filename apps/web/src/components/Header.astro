@@ -1,0 +1,24 @@
+---
+import { site } from '../config/site';
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-brand-800/30 bg-gradient-to-r from-brand-950 via-brand-900 to-brand-800 shadow-lg shadow-brand-950/20"
+>
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3.5">
+    <a
+      href="/"
+      class="nav-link-invert text-lg font-bold tracking-tight md:text-xl"
+      aria-label={`${site.name}, inicio`}
+    >
+      {site.name}
+    </a>
+    <nav class="ml-auto flex w-full flex-wrap justify-end gap-x-5 gap-y-2 text-sm font-semibold sm:w-auto" aria-label="Navegación principal">
+      {site.nav.map((item) => (
+        <a href={item.href} class="nav-link-invert">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>

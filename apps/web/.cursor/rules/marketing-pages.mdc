@@ -1,0 +1,103 @@
+---
+description: Rules for public-facing marketing pages and shared marketing components
+globs:
+  - "src/pages/**/*.astro"
+  - "src/components/**/*.astro"
+  - "src/components/**/*.tsx"
+---
+
+# OrigenLab marketing page rules
+
+Apply these rules when editing public-facing pages or shared UI sections.
+
+## Primary objective
+
+Every page should help a potential client do one or more of these:
+- understand what OrigenLab offers
+- find the right product category
+- feel trust in the business
+- request a quotation
+- contact OrigenLab quickly
+
+## Messaging priorities
+
+Prioritize:
+1. clarity of offer
+2. target customer relevance
+3. easy contact
+4. professional credibility
+5. simple navigation
+
+## Copy style
+
+Write Spanish copy that is:
+- direct
+- sober
+- commercial but not exaggerated
+- easy to scan
+- suitable for B2B audiences in Chile
+
+Avoid:
+- empty slogans
+- exaggerated claims
+- long walls of text
+- vague statements like "soluciones innovadoras de clase mundial" unless supported
+
+Prefer:
+- short section intros
+- concrete category labels
+- trust-building service language
+- visible contact actions
+
+## Approved business framing
+
+Safe statements include ideas like:
+- venta de equipos para laboratorio
+- atención a clientes en todo Chile
+- apoyo en selección de equipos según necesidad
+- soporte, asesoría, instalación y puesta en marcha en equipos más complejos
+- contacto para cotización y consultas
+
+Unsafe statements unless confirmed:
+- representantes oficiales de marcas específicas
+- servicio técnico certificado
+- stock inmediato
+- despacho garantizado en cierto plazo
+- cobertura técnica nacional presencial
+- cumplimiento normativo específico
+
+## CTA patterns
+
+Prefer one clear CTA per section. Examples:
+- Solicitar cotización
+- Hablar por WhatsApp
+- Contactar a OrigenLab
+- Ver categorías
+- Solicitar información
+
+## Layout/content guidance
+
+A good page structure is usually:
+- clear hero
+- brief explanation of offer
+- category or service blocks
+- trust/support section
+- contact CTA
+- footer with direct contact details
+
+## SEO/content guidance
+
+When improving pages:
+- use a single clear H1
+- use descriptive H2s
+- mention audience and category terms naturally
+- keep title/description aligned with real content
+- avoid keyword stuffing
+
+## Contact defaults
+
+If a contact block is needed and no explicit data source exists, use:
+- contacto@origenlab.cl
+- +56 9 6256 7816
+- WhatsApp same number
+- Valdivia, Chile
